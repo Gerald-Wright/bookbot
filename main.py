@@ -1,11 +1,20 @@
 import stats
 
 def main():
-    text = get_book_text("books/frankenstein.txt")
+    """
+    read the book
+    calc word count
+    create dict of char counts
+    convert dict into sorted list of dicts
+    build report
+    """
+    book_file = "books/frankenstein.txt"
+    text = get_book_text(book_file)
     if text != None:
-        print(f"{stats.get_num_words(text)} words found in the document")
-        print()
-        print(f"{stats.get_char_count(text)}")
+        num_words = stats.get_num_words(text) 
+        unsorted_char_dict = stats.get_char_count(text)
+        sorted_char_list = stats.get_sort_list_of_dict(unsorted_char_dict)
+        print_report(book_file, num_words, sorted_char_list)
 
 def get_book_text(path_to_file):
     """
@@ -22,6 +31,19 @@ def get_book_text(path_to_file):
 
     return file_contents
     
+def print_report(book_path, num_words, sorted_list):
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_path}...")
+   
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+   
+    print("--------- Character Count -------")
+    for item in sorted_list:
+        print(f"{item['char']}: {item['count']}")
+
+    print("============= END ===============")
+
 if __name__ == "__main__":
     main()
     

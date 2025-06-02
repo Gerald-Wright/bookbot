@@ -14,7 +14,7 @@ def main():
         num_words = stats.get_num_words(text) 
         unsorted_char_dict = stats.get_char_count(text)
         sorted_char_list = stats.get_sort_list_of_dict(unsorted_char_dict)
-        print_report(book_file, num_words, sorted_char_list)
+        print_report(book_file, num_words, sorted_char_list, False)
 
 def get_book_text(path_to_file):
     """
@@ -31,7 +31,7 @@ def get_book_text(path_to_file):
 
     return file_contents
     
-def print_report(book_path, num_words, sorted_list):
+def print_report(book_path, num_words, sorted_list, include_nonalpha = True):
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {book_path}...")
    
@@ -40,7 +40,8 @@ def print_report(book_path, num_words, sorted_list):
    
     print("--------- Character Count -------")
     for item in sorted_list:
-        print(f"{item['char']}: {item['count']}")
+        if (item['char'].isalpha() or include_nonalpha):
+            print(f"{item['char']}: {item['count']}")
 
     print("============= END ===============")
 

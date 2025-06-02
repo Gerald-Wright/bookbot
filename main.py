@@ -1,9 +1,11 @@
-from stats import get_num_words
+import stats
 
 def main():
     text = get_book_text("books/frankenstein.txt")
     if text != None:
-        print(f"{get_num_words(text)} words found in the document")
+        print(f"{stats.get_num_words(text)} words found in the document")
+        print()
+        print(f"{stats.get_char_count(text)}")
 
 def get_book_text(path_to_file):
     """

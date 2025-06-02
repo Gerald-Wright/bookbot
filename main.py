@@ -1,7 +1,7 @@
 def main():
     text = get_book_text("books/frankenstein.txt")
     if text != None:
-        print(f("{number_of_words(text)} words found in the document")
+        print(f"{number_of_words(text)} words found in the document")
 
 def number_of_words(content):
     """

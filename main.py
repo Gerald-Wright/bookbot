@@ -1,4 +1,5 @@
 import stats
+import sys
 
 def main():
     """
@@ -8,7 +9,11 @@ def main():
     convert dict into sorted list of dicts
     build report
     """
-    book_file = "books/frankenstein.txt"
+    if len(sys.argv) == 1:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_file = sys.argv[1]
     text = get_book_text(book_file)
     if text != None:
         num_words = stats.get_num_words(text) 
